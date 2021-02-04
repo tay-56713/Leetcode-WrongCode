@@ -1,0 +1,33 @@
+class Solution {
+public:
+   vector<int> arrage(vector<int>& arr, int s, int n) {
+		for (int i=0;i<n;i++) {
+			if (arr[s] > arr[s++]) {
+				int t = arr[s++];
+				arr[s++] = arr[s];
+				arr[s] = t;
+				
+			}
+			s++;
+				
+		}
+		return arr;
+	}
+	vector<double> mediumSlingWindow(vector<int>& nums,int k) {
+		vector<double> medium;
+		vector<int > arr;
+		for (int i = 0;;i++) {
+			arr = arrage(nums, i, k);
+			if (k / 2 != 0) {
+				int t = (k + 1) / 2;
+				medium[i] = arr[t];
+			}
+			else {
+				int me = k / 2;
+				medium[i] = (arr[me] + arr[me + 1]) / 2.00;
+			}
+
+		}
+		return medium;
+	}
+};
